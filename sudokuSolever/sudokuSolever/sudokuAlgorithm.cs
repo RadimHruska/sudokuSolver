@@ -16,7 +16,6 @@ namespace sudokuSolever
         private int[,] Matrix = new int[9,9];
         private bool IsPosible (int num, int row, int column)
         {
-
             for (int i = 0; i < 9; i++)
             {
                 if (Matrix[row, i] == num && i != column)
@@ -47,7 +46,6 @@ namespace sudokuSolever
                 }
             }
             return true;
-       
         }
 
         private bool isSudoku() 
@@ -60,8 +58,7 @@ namespace sudokuSolever
                     {
                         return false;
                     }
-                }
-               
+                }  
             }
             return true;
         }
@@ -71,7 +68,6 @@ namespace sudokuSolever
             int row = -1;
             int column = -1;
             bool isFill = true;
-
 
             for (int i = 0; i < 9; i++)
             {
@@ -143,9 +139,7 @@ namespace sudokuSolever
             {
                 MessageBox.Show("Nelze vyřešit");
                 return numericUpDowns;
-            }
-
-            
-           }
+            }  
+        }
     }
 }

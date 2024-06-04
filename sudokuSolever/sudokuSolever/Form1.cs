@@ -37,7 +37,6 @@ namespace sudokuSolever
                     Controls.Add(listOfNumerics[i, j]);
                 }
             }
-
         }
 
         private void Solve(object sender, EventArgs e)
@@ -67,10 +66,7 @@ namespace sudokuSolever
                 {
                     writer.Write(data);
                 }
-            }
-
-               
-           
+            } 
         }
 
         private void Load(object sender, EventArgs e)
