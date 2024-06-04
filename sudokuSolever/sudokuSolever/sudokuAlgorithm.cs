@@ -19,7 +19,7 @@ namespace sudokuSolever
 
             for (int i = 0; i < 9; i++)
             {
-                if (Matrix[row, i] == num)
+                if (Matrix[row, i] == num && i != column)
                 {
                     return false;
                 }
@@ -27,7 +27,7 @@ namespace sudokuSolever
 
             for (int i = 0; i < 9; i++)
             {
-                if (Matrix[i, column] == num)
+                if (Matrix[i, column] == num && i != row)
                 {
                     return false;
                 }
@@ -40,7 +40,7 @@ namespace sudokuSolever
             {
                 for (int j = startColumn; j < startColumn + 3; j++)
                 {
-                    if (Matrix[i,j] == num)
+                    if (Matrix[i,j] == num && i != row)
                     {
                         return false;
                     }
@@ -56,7 +56,7 @@ namespace sudokuSolever
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    if (!IsPosible(Matrix[i, j], i, j))
+                    if (!IsPosible(Matrix[i, j], i, j) && Matrix[i, j] != 0)
                     {
                         return false;
                     }
@@ -125,8 +125,7 @@ namespace sudokuSolever
                     Matrix[i,j] = (int)numeric.Value;
                 }
             }
-
-            if (isSudoku() && SolveSudoku() )
+            if (isSudoku() && SolveSudoku())
             {
                 NumericUpDown[,] listOfSolvedNumerics = new NumericUpDown[9, 9];
                 listOfSolvedNumerics = numericUpDowns;
