@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -47,6 +48,22 @@ namespace sudokuSolever
             }
             return true;
        
+        }
+
+        private bool isSudoku() 
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (!IsPosible(Matrix[i, j], i, j))
+                    {
+                        return false;
+                    }
+                }
+               
+            }
+            return true;
         }
 
         private bool SolveSudoku()
@@ -109,7 +126,7 @@ namespace sudokuSolever
                 }
             }
 
-            if (SolveSudoku())
+            if (isSudoku() && SolveSudoku() )
             {
                 NumericUpDown[,] listOfSolvedNumerics = new NumericUpDown[9, 9];
                 listOfSolvedNumerics = numericUpDowns;
@@ -125,6 +142,7 @@ namespace sudokuSolever
             }
             else
             {
+                MessageBox.Show("Nelze vyřešit");
                 return numericUpDowns;
             }
 

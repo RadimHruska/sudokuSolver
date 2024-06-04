@@ -12,13 +12,14 @@ namespace sudokuSolever
 {
     public partial class Form1 : Form
     {
-        public NumericUpDown [,] listOfNumerics = new NumericUpDown[9,9];
+        public NumericUpDown[,] listOfNumerics = new NumericUpDown[9, 9];
         public sudokuAlgorithm SudokuSolver = new sudokuAlgorithm();
         public Form1()
         {
             InitializeComponent();
             generateGrid();
         }
+#if DEBUG
         private int[,] board = new int[,] {
             { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
             { 5, 2, 0, 0, 0, 0, 0, 0, 0 },
@@ -30,6 +31,7 @@ namespace sudokuSolever
             { 0, 0, 0, 0, 0, 0, 0, 7, 4 },
             { 0, 0, 5, 2, 0, 6, 3, 0, 0 }
         };
+#endif
 
         private void generateGrid()
         {
@@ -37,8 +39,12 @@ namespace sudokuSolever
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    var numeric = new NumericUpDown();
+                    var numeric = new NumericUpDown(); 
+                    numeric.Value = 0;
+#if DEBUG
                     numeric.Value = board[j,i];
+#endif
+                   
                     numeric.Maximum = 9;
                     numeric.Minimum = 0;
                     numeric.Width = 50;
