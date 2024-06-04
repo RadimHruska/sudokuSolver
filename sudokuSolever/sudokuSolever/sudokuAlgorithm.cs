@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace sudokuSolever
 {
-    internal class solveSudoku
+    public class sudokuAlgorithm
     {
         private int[,] Matrix = new int[9,9];
         private bool IsPosible (int num, int row, int column)
         {
+
             for (int i = 0; i < 9; i++)
             {
                 if (Matrix[row, i] == num)
@@ -22,6 +23,7 @@ namespace sudokuSolever
                     return false;
                 }
             }
+
             for (int i = 0; i < 9; i++)
             {
                 if (Matrix[i, column] == num)
@@ -44,6 +46,7 @@ namespace sudokuSolever
                 }
             }
             return true;
+       
         }
 
         private bool SolveSudoku()
@@ -81,14 +84,15 @@ namespace sudokuSolever
                 if (IsPosible(i, row, column))
                 {
                     Matrix[row,column] = i;
-                }
-                if (SolveSudoku())
-                {
-                    return true;
-                }
-                else 
-                {
-                    Matrix[row,column] = 0;
+               
+                    if (SolveSudoku())
+                    {
+                        return true;
+                    }
+                    else 
+                    {
+                        Matrix[row,column] = 0;
+                    }
                 }
             }
 

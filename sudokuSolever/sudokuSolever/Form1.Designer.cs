@@ -40,6 +40,7 @@
             this.button1.TabIndex = 81;
             this.button1.Text = "SOLVE";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Solve);
             // 
             // Form1
             // 
