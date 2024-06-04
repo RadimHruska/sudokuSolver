@@ -112,6 +112,7 @@ namespace sudokuSolever
             if (SolveSudoku())
             {
                 NumericUpDown[,] listOfSolvedNumerics = new NumericUpDown[9, 9];
+                listOfSolvedNumerics = numericUpDowns;
                 for (int i = 0; i < 9; i++)
                 {
                     for (int j = 0; j < 9; j++)

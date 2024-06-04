@@ -38,7 +38,7 @@ namespace sudokuSolever
                 for (int j = 0; j < 9; j++)
                 {
                     var numeric = new NumericUpDown();
-                    numeric.Value = board[i,j];
+                    numeric.Value = board[j,i];
                     numeric.Maximum = 9;
                     numeric.Minimum = 0;
                     numeric.Width = 50;
