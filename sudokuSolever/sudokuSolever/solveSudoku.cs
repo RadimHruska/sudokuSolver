@@ -13,7 +13,7 @@ namespace sudokuSolever
     internal class solveSudoku
     {
         private int[,] Matrix = new int[9,9];
-        private bool isPosible (int num, int row, int column)
+        private bool IsPosible (int num, int row, int column)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -48,8 +48,51 @@ namespace sudokuSolever
 
         private bool SolveSudoku()
         {
+            int row = -1;
+            int column = -1;
+            bool isFill = true;
 
-            return true;
+
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (Matrix[i,j] == 0)
+                    {
+                        row = i;
+                        column = j;
+                        isFill = false;
+                        break;
+                    }
+                }
+                if (!isFill)
+                {
+                    break;
+                }
+            }
+
+            if (isFill)
+            {
+                return true;
+            }
+
+            for (int i = 1; i <= 9; i++)
+            {
+                if (IsPosible(i, row, column))
+                {
+                    Matrix[row,column] = i;
+                }
+                if (SolveSudoku())
+                {
+                    return true;
+                }
+                else 
+                {
+                    Matrix[row,column] = 0;
+                }
+            }
+
+            return false;
         }
         public NumericUpDown[,] SolvedSudoku(NumericUpDown[,] numericUpDowns)
            {
